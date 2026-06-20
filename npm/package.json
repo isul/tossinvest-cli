@@ -1,0 +1,26 @@
+{
+  "name": "@isul/tossinvest-cli",
+  "version": "0.1.0",
+  "description": "CLI for Toss Invest Open API",
+  "license": "MIT",
+  "bin": {
+    "tossinvest-cli": "bin/tossinvest-cli.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isul/tossinvest-cli.git"
+  },
+  "keywords": [
+    "tossinvest",
+    "toss",
+    "stock",
+    "cli",
+    "openapi"
+  ]
+}

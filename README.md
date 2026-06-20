@@ -4,7 +4,7 @@
 
 Official-style CLI for the [Toss Invest Open API](https://developers.tossinvest.com/docs).
 
-> **This program is not an official Toss Invest product.** (이 프로그램은 토스증권 공식 프로그램이 아닙니다.)
+> **This program is not an official Toss Invest product.**
 
 ## Install
 

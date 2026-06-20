@@ -12,7 +12,7 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-const Version = "0.1.0"
+var Version = "0.1.0"
 
 type Runtime struct {
 	Cfg           *config.Config

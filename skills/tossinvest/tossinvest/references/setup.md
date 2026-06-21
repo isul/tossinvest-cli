@@ -54,13 +54,19 @@ Config file: `~/.tossinvest/config.yaml`
 | `TOSSINVEST_BASE_URL` | API base URL (default: `https://openapi.tossinvest.com`) |
 | `TOSSINVEST_AUTO_CONFIRM` | Set to `1` to skip CONFIRM for write ops |
 
-## Cursor Agent Skill
+## Agent Skill
 
-Copy or symlink the skill directory:
+This repository includes an [Agent Skills](https://agentskills.io/) skill. Copy or symlink `skills/tossinvest/tossinvest` into your agent's skills folder:
+
+| Agent | Skills directory |
+|---|---|
+| Claude Code | `~/.claude/skills/` or `.claude/skills/` |
+| OpenAI Codex | `~/.agents/skills/` or `.agents/skills/` |
+| GitHub Copilot | `.github/skills/` |
+| Cursor | `~/.cursor/skills/` |
 
 ```bash
-mkdir -p ~/.cursor/skills
-cp -r skills/tossinvest/tossinvest ~/.cursor/skills/tossinvest
+cp -r skills/tossinvest/tossinvest ~/.claude/skills/tossinvest
 ```
 
 ## Windows 11

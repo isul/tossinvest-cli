@@ -1,31 +1,101 @@
 [한국어](./README.md) | English
 
-# tossinvest-cli
+# tossinvest-cli — Command-line (CLI) tool for the Toss Invest Open API
 
-Official-style CLI for the [Toss Invest Open API](https://developers.tossinvest.com/docs).
+A command-line (CLI) tool for the [Toss Invest Open API](https://developers.tossinvest.com/docs). Quickly **look up domestic and overseas stock prices**, **check Toss Invest account balances**, and **place stock orders / trade** right from your terminal — ideal for scripting, automation, and AI coding agent integration.
 
 > **This program is not an official Toss Invest product.**
 
-## Install
+**Keywords**: Toss Invest, 토스증권, Toss Invest API, stock CLI, stock quotes, account balance, stock order, automated trading, Go, open source
 
-### npm
+## Features
+
+- **Domestic & overseas stock price lookup** — real-time orderbook, current price, trades, price limits, and candles (minute/daily)
+- **Stock info** — stock fundamentals and buy warnings
+- **Toss Invest account balance** — list accounts and view holdings (balances)
+- **CLI-based stock ordering / trading** — create, modify, and cancel buy/sell orders; list and inspect orders
+- **Order info** — buying power, sellable quantity, and commission calculation
+- **Market info** — exchange rate and KR/US market open calendars
+- **Flexible output formats** — `json`, `yaml`, `pretty`, `raw`, and [GJSON](https://github.com/tidwall/gjson) transforms, optimized for scripting
+- **AI agent integration** — ships a `SKILL.md` standard skill for Claude Code, Codex, Copilot, Gemini CLI, OpenClaw, Hermes, and more
+- **Cross-platform** — prebuilt binaries for Linux, macOS, and Windows (amd64/arm64)
+
+## Quick Start
+
+### 1. Install (per OS)
+
+Grab the latest prebuilt binary from GitHub Releases. Use the command that matches your OS/architecture.
+
+**Linux (amd64)**
 
 ```sh
-npm install -g @isul/tossinvest-cli
+curl -fsSL https://github.com/isul/tossinvest-cli/releases/latest/download/tossinvest-cli_linux_amd64.tar.gz \
+  | tar -xz tossinvest-cli && sudo mv tossinvest-cli /usr/local/bin/
 ```
+
+**Linux (arm64)**
+
+```sh
+curl -fsSL https://github.com/isul/tossinvest-cli/releases/latest/download/tossinvest-cli_linux_arm64.tar.gz \
+  | tar -xz tossinvest-cli && sudo mv tossinvest-cli /usr/local/bin/
+```
+
+**macOS (Apple Silicon / arm64)**
+
+```sh
+curl -fsSL https://github.com/isul/tossinvest-cli/releases/latest/download/tossinvest-cli_darwin_arm64.tar.gz \
+  | tar -xz tossinvest-cli && sudo mv tossinvest-cli /usr/local/bin/
+```
+
+**macOS (Intel / amd64)**
+
+```sh
+curl -fsSL https://github.com/isul/tossinvest-cli/releases/latest/download/tossinvest-cli_darwin_amd64.tar.gz \
+  | tar -xz tossinvest-cli && sudo mv tossinvest-cli /usr/local/bin/
+```
+
+**Windows (PowerShell, amd64)**
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/isul/tossinvest-cli/releases/latest/download/tossinvest-cli_windows_amd64.zip" -OutFile tossinvest-cli.zip
+Expand-Archive tossinvest-cli.zip -DestinationPath .
+.\tossinvest-cli.exe version
+```
+
+> Alternative: if you have Go installed, run `go install github.com/isul/tossinvest-cli/cmd/tossinvest-cli@latest`.
+
+### 2. Configure & use
+
+```sh
+# Configure credentials (OAuth client ID/secret)
+tossinvest-cli config set
+
+# Look up domestic & overseas stock prices
+tossinvest-cli prices list --symbols 005930,AAPL
+
+# Check account balance (holdings)
+tossinvest-cli holdings list
+
+# Place a stock order (buy)
+tossinvest-cli orders create --symbol 005930 --side BUY --order-type LIMIT --quantity 10 --price 70000
+```
+
+For full installation options, see the [Install](#install) section below; for per-command flags, use `--help`.
+
+## Install
 
 ### GitHub Releases
 
 Pre-built binaries for Linux, macOS, and Windows (amd64 and arm64) are available on [GitHub Releases](https://github.com/isul/tossinvest-cli/releases).
 
 1. Open the [latest release](https://github.com/isul/tossinvest-cli/releases/latest)
-2. Download the archive for your OS and architecture (e.g. `tossinvest-cli_1.0.0_linux_amd64.tar.gz`)
+2. Download the archive for your OS and architecture (e.g. `tossinvest-cli_linux_amd64.tar.gz`)
 3. Extract the binary and run it (add to your PATH for global use)
 
 Linux and macOS use `.tar.gz`; Windows uses `.zip`.
 
 ```sh
-tar -xzf tossinvest-cli_*_linux_amd64.tar.gz
+tar -xzf tossinvest-cli_linux_amd64.tar.gz
 sudo mv tossinvest-cli /usr/local/bin/
 tossinvest-cli version
 ```
@@ -89,7 +159,7 @@ See `tossinvest-cli <resource> <command> --help` for details. Examples are in [`
 
 ## AI Agent Skill
 
-An [Agent Skills](https://agentskills.io/) skill for AI coding agents is in [`skills/tossinvest/tossinvest/SKILL.md`](skills/tossinvest/tossinvest/SKILL.md). It follows the open `SKILL.md` format and works with Claude Code, Codex, Copilot, Gemini CLI, and other compatible agents.
+An [Agent Skills](https://agentskills.io/) skill for AI coding agents is in [`skills/tossinvest/tossinvest/SKILL.md`](skills/tossinvest/tossinvest/SKILL.md). It follows the open `SKILL.md` format and works with Claude Code, Codex, Copilot, Gemini CLI, OpenClaw, Hermes, and other compatible agents.
 
 Copy the skill directory into your agent's skills folder:
 
